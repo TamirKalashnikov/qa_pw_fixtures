@@ -4,6 +4,14 @@ export class ViewArticlePage {
   constructor(page) {
     this.page = page;
     this.articleTitleHeader = page.getByRole('heading');
+     this.editArticleLink = page.getByRole(
+      'link', { name: 'Edit Article' }).first();
+  }
+
+  async clickEditArticleLink() {
+    await test.step(`Click the 'Edit Article' link`, async () => {
+      await this.editArticleLink.click();
+    });
   }
 
   async assertArticleTitleIsVisible(title) {
